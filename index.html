@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>十分便利水果商城 - 完整UI原型展示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #f5f5f5 100%);
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        /* 主标题 */
+        .main-header {
+            text-align: center;
+            margin-bottom: 50px;
+            background: white;
+            padding: 50px 40px;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        }
+        
+        .main-title {
+            font-size: 52px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        .main-subtitle {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        
+        .main-desc {
+            font-size: 16px;
+            color: #999;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+        
+        .desc-tag {
+            background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: 2px solid #4CAF50;
+            color: #4CAF50;
+            font-weight: 600;
+        }
+        
+        /* 页面导航 */
+        .page-nav {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            padding: 14px 36px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 24px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-btn:hover {
+            background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+            color: white;
+            border-color: #4CAF50;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(76, 175, 80, 0.3);
+        }
+        
+        .nav-btn.active {
+            background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+            color: white;
+            border-color: #4CAF50;
+            box-shadow: 0 8px 24px rgba(76, 175, 80, 0.3);
+        }
+        
+        .nav-icon {
+            font-size: 20px;
+        }
+        
+        /* 页面展示区 */
+        .pages-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .page-wrapper {
+            background: white;
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .page-wrapper:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 16px 48px rgba(76, 175, 80, 0.2);
+        }
+        
+        .page-header {
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #4CAF50;
+        }
+        
+        .page-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .page-icon {
+            font-size: 28px;
+        }
+        
+        .page-description {
+            font-size: 14px;
+            color: #999;
+            line-height: 1.8;
+        }
+        
+        .page-frame {
+            border: 3px solid #f5f5f5;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #fafafa;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        iframe {
+            border: none;
+            display: block;
+            width: 100%;
+        }
+        
+        /* 设计规格 */
+        .design-specs {
+            background: white;
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            margin-bottom: 50px;
+        }
+        
+        .specs-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #4CAF50;
+            margin-bottom: 40px;
+            border-left: 6px solid #4CAF50;
+            padding-left: 24px;
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+        }
+        
+        .spec-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+            padding: 28px;
+            border-radius: 16px;
+            border-left: 5px solid #4CAF50;
+            transition: all 0.3s ease;
+        }
+        
+        .spec-card:hover {
+            transform: translateX(12px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.15);
+        }
+        
+        .spec-card h3 {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .spec-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .spec-card li {
+            color: #666;
+            font-size: 15px;
+            line-height: 2.2;
+            padding-left: 24px;
+            position: relative;
+        }
+        
+        .spec-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        /* 功能特性 */
+        .features-section {
+            background: white;
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            margin-bottom: 50px;
+        }
+        
+        .features-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #4CAF50;
+            margin-bottom: 40px;
+            border-left: 6px solid #4CAF50;
+            padding-left: 24px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
+            padding: 32px;
+            border-radius: 20px;
+            border: 2px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            border-color: #4CAF50;
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(76, 175, 80, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 16px;
+        }
+        
+        .feature-desc {
+            font-size: 15px;
+            color: #666;
+            line-height: 2;
+        }
+        
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 50px 40px;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        }
+        
+        .footer h3 {
+            color: #4CAF50;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .footer p {
+            color: #666;
+            font-size: 16px;
+            line-height: 2;
+        }
+        
+        .footer strong {
+            color: #4CAF50;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 主标题 -->
+        <div class="main-header">
+            <h1 class="main-title">🍊 十分便利水果商城</h1>
+            <p class="main-subtitle">现代优雅的极简主义美学 · 清新柔和的渐变配色 · 轻盈通透的沉浸式体验</p>
+            <div class="main-desc">
+                <span class="desc-tag">🏠 首页</span>
+                <span class="desc-tag">📦 商品详情</span>
+                <span class="desc-tag">🛒 购物车</span>
+                <span class="desc-tag">👤 会员中心</span>
+            </div>
+        </div>
+        
+        <!-- 页面导航 -->
+        <div class="page-nav">
+            <button class="nav-btn active">
+                <span class="nav-icon">📱</span>
+                <span>全部页面</span>
+            </button>
+            <button class="nav-btn">
+                <span class="nav-icon">🏠</span>
+                <span>首页</span>
+            </button>
+            <button class="nav-btn">
+                <span class="nav-icon">📦</span>
+                <span>商品详情</span>
+            </button>
+            <button class="nav-btn">
+                <span class="nav-icon">🛒</span>
+                <span>购物车</span>
+            </button>
+            <button class="nav-btn">
+                <span class="nav-icon">👤</span>
+                <span>会员中心</span>
+            </button>
+        </div>
+        
+        <!-- 页面展示 -->
+        <div class="pages-showcase">
+            <!-- 首页 -->
+            <div class="page-wrapper">
+                <div class="page-header">
+                    <div class="page-title">
+                        <span class="page-icon">🏠</span>
+                        <span>首页 Home Page</span>
+                    </div>
+                    <div class="page-description">
+                        品牌搜索、会员中心、轮播Banner、节日活动、分类导航、品质服务、热门商品推荐、个性化推荐、会员专享、优惠券领取、限时拼团、秒杀活动、水果知识资讯、每日签到、私域社群引流等完整功能模块。
+                    </div>
+                </div>
+                <div class="page-frame">
+                    <iframe src="UI.html" width="375" height="2000" scrolling="yes"></iframe>
+                </div>
+            </div>
+            
+            <!-- 商品详情页 -->
+            <div class="page-wrapper">
+                <div class="page-header">
+                    <div class="page-title">
+                        <span class="page-icon">📦</span>
+                        <span>商品详情页 Product Detail</span>
+                    </div>
+                    <div class="page-description">
+                        1:1高清轮播图（支持缩放）、价格信息展示、商品标题副标题、产地库存检测、多规格选择器、数量加减控制、配送时效信息、售后服务承诺、图文详情展示、用户评价列表、评分标签系统、客服收藏功能、加购与立即购买。
+                    </div>
+                </div>
+                <div class="page-frame">
+                    <iframe src="product-detail.html" width="375" height="2000" scrolling="yes"></iframe>
+                </div>
+            </div>
+            
+            <!-- 购物车页面 -->
+            <div class="page-wrapper">
+                <div class="page-header">
+                    <div class="page-title">
+                        <span class="page-icon">🛒</span>
+                        <span>购物车页面 Shopping Cart</span>
+                    </div>
+                    <div class="page-description">
+                        全选反选控制、单个商品勾选、数量加减调整、商品删除操作、拼团商品标识、库存不足提示、优惠券选择区、配送方式展示、价格明细计算（小计/优惠/抵扣/配送费）、会员折扣标识、去结算按钮、TabBar导航。
+                    </div>
+                </div>
+                <div class="page-frame">
+                    <iframe src="cart.html" width="375" height="1200" scrolling="yes"></iframe>
+                </div>
+            </div>
+            
+            <!-- 会员中心页面 -->
+            <div class="page-wrapper">
+                <div class="page-header">
+                    <div class="page-title">
+                        <span class="page-icon">👤</span>
+                        <span>会员中心 Member Center</span>
+                    </div>
+                    <div class="page-description">
+                        会员信息栏（等级/昵称/积分/权益入口）、数据统计（果粒值/优惠券/收藏/浏览）、8宫格快捷入口、每日签到模块、积分兑换区、会员专享活动、最近订单列表、售后服务联系（店长微信/电话）、底部TabBar导航。
+                    </div>
+                </div>
+                <div class="page-frame">
+                    <iframe src="member.html" width="375" height="2200" scrolling="yes"></iframe>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 设计规格 -->
+        <div class="design-specs">
+            <h2 class="specs-title">🎨 设计规格说明</h2>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <h3>🎯 设计风格</h3>
+                    <ul>
+                        <li>现代极简主义美学</li>
+                        <li>清新柔和渐变配色</li>
+                        <li>精致16rpx圆角设计</li>
+                        <li>细腻微交互动效</li>
+                        <li>舒适视觉比例</li>
+                        <li>恰到好处的留白</li>
+                    </ul>
+                </div>
+                
+                <div class="spec-card">
+                    <h3>🎨 配色方案</h3>
+                    <ul>
+                        <li>主色调：#4CAF50 品牌绿</li>
+                        <li>辅助色：#FF9800 促销橙</li>
+                        <li>会员金：#FFD700 专属标识</li>
+                        <li>标题色：#333333</li>
+                        <li>正文色：#666666</li>
+                        <li>辅助说明：#999999</li>
+                    </ul>
+                </div>
+                
+                <div class="spec-card">
+                    <h3>📐 尺寸规格</h3>
+                    <ul>
+                        <li>设计宽度：375px（750rpx）</li>
+                        <li>导航栏：64px（128rpx）</li>
+                        <li>TabBar：49px（98rpx）</li>
+                        <li>轮播图：16:9 / 1:1</li>
+                        <li>按钮圆角：12px（24rpx）</li>
+                        <li>卡片圆角：16px（32rpx）</li>
+                    </ul>
+                </div>
+                
+                <div class="spec-card">
+                    <h3>✨ 交互特性</h3>
+                    <ul>
+                        <li>3秒自动轮播切换</li>
+                        <li>100ms按钮反馈动效</li>
+                        <li>悬停微动效果</li>
+                        <li>实时倒计时更新</li>
+                        <li>流畅滚动体验</li>
+                        <li>点击响应＜200ms</li>
+                    </ul>
+                </div>
+                
+                <div class="spec-card">
+                    <h3>🔤 字体规范</h3>
+                    <ul>
+                        <li>标题字体：18px（36rpx）</li>
+                        <li>正文字体：14px（28rpx）</li>
+                        <li>辅助文字：12px（24rpx）</li>
+                        <li>价格字体：加粗显示</li>
+                        <li>无衬线字体系列</li>
+                        <li>行高：1.5-2倍字号</li>
+                    </ul>
+                </div>
+                
+                <div class="spec-card">
+                    <h3>📦 组件规范</h3>
+                    <ul>
+                        <li>商品卡片：1:1比例</li>
+                        <li>圆角统一：8-16px</li>
+                        <li>间距标准：10-20px</li>
+                        <li>阴影层次：多层渐进</li>
+                        <li>按钮高度：44-48px</li>
+                        <li>图标尺寸：20-24px</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 功能特性 -->
+        <div class="features-section">
+            <h2 class="features-title">⚡ 四大页面核心功能</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h3 class="feature-title">首页功能</h3>
+                    <p class="feature-desc">
+                        品牌搜索、会员中心、轮播Banner、节日活动、分类导航、品质服务、热门商品、个性推荐、会员专享、优惠券、拼团秒杀、知识资讯、签到积分、社群引流
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📦</div>
+                    <h3 class="feature-title">商品详情</h3>
+                    <p class="feature-desc">
+                        高清轮播、价格信息、品质详情、规格选择、数量控制、配送信息、售后承诺、图文详情、用户评价、评分标签、客服收藏、加购购买
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🛒</div>
+                    <h3 class="feature-title">购物车管理</h3>
+                    <p class="feature-desc">
+                        全选控制、单选勾选、数量调整、商品删除、规格修改、优惠叠加、积分抵扣、配送选择、价格计算、拼团适配、结算流程、库存同步
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👤</div>
+                    <h3 class="feature-title">会员中心</h3>
+                    <p class="feature-desc">
+                        会员信息、等级展示、积分管理、快捷入口、订单查询、优惠券管理、地址管理、每日签到、积分兑换、会员专享、售后服务、联系方式
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎁</div>
+                    <h3 class="feature-title">营销体系</h3>
+                    <p class="feature-desc">
+                        优惠券领取、限时拼团、秒杀抢购、会员专享、积分兑换、满减活动、新人礼包、分享裂变、节日专题、倒计时提醒、签到奖励、等级成长
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3 class="feature-title">配送履约</h3>
+                    <p class="feature-desc">
+                        1小时达、次日达配送、门店自提、定位服务（雨山区红旗南路114号）、起送价提示、配送费计算、实时库存、到货提醒、坏果包赔、售后保障
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👑</div>
+                    <h3 class="feature-title">会员权益</h3>
+                    <p class="feature-desc">
+                        会员等级、果粒值积分、专享价格、生日礼包、免运费权益、优先配送、专属客服、积分抵扣、签到奖励、等级成长、专属活动、会员日特惠
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3 class="feature-title">售后服务</h3>
+                    <p class="feature-desc">
+                        店长微信：fruit_store_001、店长电话：400-888-6666、在线客服、坏果包赔（2小时内）、三无退货、品质保障、订单跟踪、配送状态查询
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 页脚 -->
+        <div class="footer">
+            <h3>🎉 UI原型设计完成</h3>
+            <p>
+                本原型图完整呈现了<strong>十分便利水果商城</strong>小程序的四大核心页面：<br><br>
+                <strong>🏠 首页</strong>（品牌展示、商品推荐、营销活动、内容福利）<br>
+                <strong>📦 商品详情页</strong>（商品信息、规格选择、用户评价、加购购买）<br>
+                <strong>🛒 购物车页面</strong>（商品管理、优惠叠加、价格计算、结算流程）<br>
+                <strong>👤 会员中心</strong>（会员信息、订单管理、积分兑换、售后服务）<br>
+                <br>
+                采用绿色系主色调（#4CAF50）+ 橙色辅助色（#FF9800）+ 金色会员标识（#FFD700），<br>
+                现代极简美学设计，清新优雅的渐变配色，细腻的微交互动效，<br>
+                打造轻盈通透的沉浸式水果购物体验。<br>
+                <br>
+                配送地址：<strong>雨山区红旗南路114号</strong> | 联系电话：<strong>400-888-6666</strong> ✨
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+
